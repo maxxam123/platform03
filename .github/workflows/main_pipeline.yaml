@@ -45,7 +45,7 @@ jobs:
                 ### NGINX
                 mkdir -p ../../gitops/NAME01
                 mkdir -p ../../gitops/NAME01/nginx
-                cp . ../../gitops/NAME01/eso/
+                cp . ../../gitops/NAME01/nginx/
                 sed -i -e "s/NAME01/$NAME01/g" ../../gitops/NAME01/nginx/values.yaml  
               done
               
