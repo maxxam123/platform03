@@ -1,0 +1,36 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - 'cluster1/aws01/provider.yaml'
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: bootstrapTerraform
+          run: |
+
+            git clone https://github.com/maxxam123/platform01.git
+
+            mkdir -p platform01/.github/workflows
+            mkdir -p platform01/cluster/aws01
+
+            cp -r cluster/aws01/terraform.tfvars  platform01/cluster/aws01/
+            cp -r templates/pipelines/create.yaml platform01/.github/workflows/aws01.yaml
+
+            sed -i -e "s/NAME/aws01/g"         platform01/.github/workflows/aws01.yaml
+            sed -i -e "s/PROVIDER/aws/g" platform01/.github/workflows/aws01.yaml
+
+        - name: Pushes to another repository
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+          with:
+            source-directory: "platform01"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "platform01"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
