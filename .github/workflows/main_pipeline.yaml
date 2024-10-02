@@ -45,7 +45,7 @@ jobs:
                 pwd
                 mkdir -p /home/runner/work/platform03/platform03/gitops/NAME01
                 mkdir -p /home/runner/work/platform03/platform03/gitops/NAME01/eso
-                cp * /home/runner/work/platform03/platform03/gitops/NAME01/eso/
+                cp /home/runner/work/platform03/platform03/templates/gitops/eso/* /home/runner/work/platform03/platform03/gitops/NAME01/eso/
                 sed -i -e "s/NAME01/$SECRET/g" /home/runner/work/platform03/platform03/gitops/NAME01/eso/values.yaml
 
               done
