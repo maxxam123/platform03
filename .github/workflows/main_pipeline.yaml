@@ -29,7 +29,7 @@ jobs:
               sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
               cp local_pipeline.yaml ../../platform03/.github/workflows/$NAME01.yaml
               mkdir -p ../../platform03/trigger/$NAME01/
-              echo date > ../platform03/trigger/$NAME01/trigger
+              echo date > ../../platform03/trigger/$NAME01/trigger
               cat local_pipeline.yaml
               ls -la
 
