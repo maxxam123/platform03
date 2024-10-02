@@ -16,10 +16,10 @@ jobs:
             git clone https://github.com/maxxam123/platform03.git
 
             path=/home/runner/work/platform03/platform03/cluster
-      
+            ls -la
             for each in $(ls $path); do
               cd $path/$each
-
+              ls -la
               NAME01=$( sed -n 1p provider.yaml )
               PROVIDER01=$( sed -n 2p provider.yaml )
               cp ../..templates/pipelines/local_pipeline.yaml .
