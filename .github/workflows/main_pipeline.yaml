@@ -40,6 +40,9 @@ jobs:
                 cd $path/$each
               
                 ### ESO
+                echo inside gitops
+                ls
+                pwd
                 mkdir -p ../../../gitops/NAME01
                 mkdir -p ../../../gitops/NAME01/eso
                 cp . ../../../gitops/NAME01/eso/
@@ -55,14 +58,3 @@ jobs:
               
               ls
               rm -rf platform03/new/_*
-
-        - name: Pushes to another repository
-          uses: cpina/github-action-push-to-another-repository@main
-          env:
-            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-          with:
-            source-directory: "platform03"
-            destination-github-username: "maxxam123"
-            destination-repository-name: "platform03"
-            user-email: hennighausenmax@gmail.com
-            target-branch: main
