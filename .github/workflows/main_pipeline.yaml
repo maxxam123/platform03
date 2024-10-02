@@ -1,0 +1,51 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - 'cluster/*/provider.yaml'
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: bootstrapTerraform
+          run: |
+
+            git clone https://github.com/maxxam123/platform03.git
+
+            path=/home/runner/work/platform02/platform02/cluster
+      
+            for each in $(ls $path); do
+              cd $path/$each
+
+              NAME01=$( sed -n 1p provider.yaml )
+              PROVIDER01=$( sed -n 2p provider.yaml )
+              cp ../..templates/pipelines/local_pipeline.yaml .
+
+              sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
+              sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
+              cp local_pipeline.yaml ../../.github/workflows/
+
+            done
+
+            mkdir -p platform01/.github/workflows
+            mkdir -p platform01/cluster/$NAME
+
+            cp -r cluster/aws01/terraform.tfvars  platform01/cluster/$NAME/
+            cp -r templates/pipelines/create.yaml platform01/.github/workflows/$NAME.yaml
+
+            sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/$NAME.yaml
+            sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/$NAME.yaml
+
+        - name: Pushes to another repository
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+          with:
+            source-directory: "platform03"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "platform03"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
