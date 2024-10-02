@@ -30,15 +30,6 @@ jobs:
 
             done
 
-            mkdir -p platform01/.github/workflows
-            mkdir -p platform01/cluster/$NAME
-
-            cp -r cluster/aws01/terraform.tfvars  platform01/cluster/$NAME/
-            cp -r templates/pipelines/create.yaml platform01/.github/workflows/$NAME.yaml
-
-            sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/$NAME.yaml
-            sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/$NAME.yaml
-
         - name: Pushes to another repository
           uses: cpina/github-action-push-to-another-repository@main
           env:
