@@ -3,8 +3,8 @@ on:
    branches:
    - main
    paths:
-   - 'cluster/NAME01/provider.tf'
-   #- 'trigger/NAME01/trigger'
+   #- 'cluster/NAME01/provider.tf'
+   - 'trigger/NAME01/trigger'
 jobs:
   build:
       runs-on: ubuntu-latest
