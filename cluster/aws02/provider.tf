@@ -1,2 +1,2 @@
-aws01
+aws02
 aws
