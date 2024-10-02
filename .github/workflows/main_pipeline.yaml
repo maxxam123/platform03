@@ -22,7 +22,7 @@ jobs:
               ls -la
               NAME01=$( sed -n 1p provider.yaml )
               PROVIDER01=$( sed -n 2p provider.yaml )
-              cp ../..templates/pipelines/local_pipeline.yaml .
+              cp ../../templates/pipelines/local_pipeline.yaml .
 
               sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
               sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
