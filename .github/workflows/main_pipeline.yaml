@@ -18,9 +18,6 @@ jobs:
             #path=/home/runner/work/platform03/platform03/cluster
             ls -la
             ls platform03
-            #for each in $(ls $path); do
-              #cd $path/$each
-              ls -la
               
               NAME01=$( sed -n 1p new/_*/provider.tf )
               PROVIDER01=$( sed -n 2p new/_*provider.tf )
@@ -32,16 +29,10 @@ jobs:
               mkdir -p platform03/cluster/$NAME01
               cp new/_*/provider.tf platform03/cluster/$NAME01/
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
-              rm -rf new/_*
-
+              #rm -rf new/_*
               
-              #mkdir -p ../../platform03/trigger/$NAME01/
-              #echo $(date) > ../../platform03/trigger/$NAME01/trigger
               cat local_pipeline.yaml
               ls -la
-
-            done
-            ls -la
 
         - name: Pushes to another repository
           uses: cpina/github-action-push-to-another-repository@main
