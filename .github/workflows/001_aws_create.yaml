@@ -20,7 +20,7 @@ jobs:
             mkdir -p platform01/.github/workflows
             mkdir -p platform01/cluster/aws01
             cp -r cluster/aws01/* platform01/cluster/aws01/
-            cp -r templates/pipeline/create.yaml platform01/.github/workflows/aws01.yaml
+            cp -r templates/pipelines/create.yaml platform01/.github/workflows/aws01.yaml
             ls -la platform01
 
         - name: Pushes to another repository
