@@ -17,6 +17,7 @@ jobs:
 
             path=/home/runner/work/platform03/platform03/cluster
             ls -la
+            ls platform03
             for each in $(ls $path); do
               cd $path/$each
               ls -la
@@ -26,7 +27,7 @@ jobs:
 
               sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
               sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
-              cp local_pipeline.yaml ../../.github/workflows/$NAME01.yaml
+              cp local_pipeline.yaml ../../platform03/.github/workflows/$NAME01.yaml
               cat local_pipeline.yaml
               ls -la
 
