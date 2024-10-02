@@ -21,8 +21,8 @@ jobs:
             for each in $(ls $path); do
               cd $path/$each
               ls -la
-              NAME01=$( sed -n 1p provider.yaml )
-              PROVIDER01=$( sed -n 2p provider.yaml )
+              NAME01=$( sed -n 1p provider.tf )
+              PROVIDER01=$( sed -n 2p provider.tf )
               cp ../../templates/pipelines/local_pipeline.yaml .
 
               sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
