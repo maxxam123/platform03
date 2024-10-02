@@ -16,14 +16,20 @@ jobs:
             ls -la
             git clone https://github.com/maxxam123/platform01.git
             ls -la
+            ls -la platform01
+            mkdir -p platform01/.github/workflows
+            mkdir -p platform01/cluster/aws01/**
+            cp cluster/aws01/* platform01/cluster/aws01/**
+            cp templates/pipeline/create.yaml platform01/.github/workflows/aws01.yaml
+            ls -la platform01
 
-        # - name: Pushes to another repository
-        #   uses: cpina/github-action-push-to-another-repository@main
-        #   env:
-        #     API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-        #   with:
-        #     source-directory: "folder"
-        #     destination-github-username: "maxxam123"
-        #     destination-repository-name: "platform01"
-        #     user-email: hennighausenmax@gmail.com
-        #     target-branch: main
+        - name: Pushes to another repository
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+          with:
+            source-directory: "platform01"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "platform01"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
