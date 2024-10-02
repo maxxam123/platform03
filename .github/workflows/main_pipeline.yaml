@@ -26,11 +26,12 @@ jobs:
 
               sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
               sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
-              cp local_pipeline.yaml ../../.github/workflows/$NAME.yaml
+              cp local_pipeline.yaml ../../.github/workflows/$NAME01.yaml
               cat local_pipeline.yaml
               ls -la
 
             done
+            ls -la
 
         - name: Pushes to another repository
           uses: cpina/github-action-push-to-another-repository@main
