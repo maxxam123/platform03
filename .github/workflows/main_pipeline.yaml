@@ -30,10 +30,7 @@ jobs:
               cp new/_*/provider.tf platform03/cluster/$NAME01/
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
               ls
-              rm -rf new
-              
-              cat local_pipeline.yaml
-              ls -la
+              rm -rf platform03/new/_*
 
         - name: Pushes to another repository
           uses: cpina/github-action-push-to-another-repository@main
