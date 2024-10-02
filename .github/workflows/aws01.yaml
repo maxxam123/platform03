@@ -3,7 +3,7 @@ on:
    branches:
    - main
    paths:
-   - 'cluster/aws01/provider.yaml'
+   - 'cluster/aws01/provider.tf'
 
 jobs:
   build:
