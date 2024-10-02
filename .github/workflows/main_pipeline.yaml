@@ -34,7 +34,7 @@ jobs:
               REPLICAS=$( sed -n 3p new/_*/provider.tf )
               LOADBALANCER=$( sed -n 4p new/_*/provider.tf )
               SECRET=$( sed -n 5p new/_*/provider.tf )
-              path=/home/runner/work/platform02/platform03/templates/gitops
+              path=/home/runner/work/platform03/platform03/templates/gitops
             
               for each in $(ls $path); do
                 cd $path/$each
