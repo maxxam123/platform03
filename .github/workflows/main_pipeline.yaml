@@ -45,6 +45,7 @@ jobs:
                 ### NGINX ###
               cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
               sed -i -e "s/REPLICAS/$REPLICAS/g" platform03/gitops/$NAME01/nginx/values.yaml
+              sed -i -e "s/LOADBALANCER/$LOADBALANCER/g" platform03/gitops/$NAME01/nginx/values.yaml
               
               
               #rm -rf platform03/new/_*
