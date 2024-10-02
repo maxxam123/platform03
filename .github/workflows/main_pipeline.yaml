@@ -3,7 +3,7 @@ on:
    branches:
    - main
    paths:
-   - 'new1/_*/provider.tf'
+   - 'new/_*/provider.tf'
 
 jobs:
   build:
