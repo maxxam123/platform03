@@ -47,13 +47,7 @@ jobs:
                 mkdir -p ../../../gitops/NAME01/eso
                 cp * ../../../gitops/NAME01/eso/
                 sed -i -e "s/NAME01/$SECRET/g" ../../../gitops/NAME01/eso/values.yaml
-                
-                ### NGINX
-                mkdir -p ../../../gitops/NAME01
-                mkdir -p ../../../gitops/NAME01/nginx
-                cp * ../../../gitops/NAME01/nginx/
-                sed -i -e "s/REPLICAS/$REPLICAS/g" ../../../gitops/NAME01/nginx/values.yaml
-                sed -i -e "s/LOADBALANCER/$LOADBALANCER/g" ../../../gitops/NAME01/nginx/values.yaml
+
               done
               cd ../../..
               ls
