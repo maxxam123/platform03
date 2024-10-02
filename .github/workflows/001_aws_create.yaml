@@ -14,8 +14,11 @@ jobs:
           run: |
 
             git clone https://github.com/maxxam123/platform01.git
-            NAME     = $( sed -n 1p cluster/aws01/provider.yaml )
-            PROVIDER = $( sed -n 2p cluster/aws01/provider.yaml )
+            NAME     = aws01
+            PROVIDER = aws
+            
+            echo $NAME
+            echo $PROVIDER
 
             mkdir -p platform01/.github/workflows
             mkdir -p platform01/cluster/$NAME
