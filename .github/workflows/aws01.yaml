@@ -3,7 +3,7 @@ on:
    branches:
    - main
    paths:
-   - 'cluster1/aws01/provider.yaml'
+   - 'cluster/aws01/provider.yaml'
 
 jobs:
   build:
@@ -21,8 +21,8 @@ jobs:
             cp -r cluster/aws01/terraform.tfvars  platform01/cluster/aws01/
             cp -r templates/pipelines/create.yaml platform01/.github/workflows/aws01.yaml
 
-            sed -i -e "s/NAME/aws01/g"         platform01/.github/workflows/aws01.yaml
-            sed -i -e "s/PROVIDER/aws/g" platform01/.github/workflows/aws01.yaml
+            sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/aws01.yaml
+            sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/aws01.yaml
 
         - name: Pushes to another repository
           uses: cpina/github-action-push-to-another-repository@main
