@@ -15,7 +15,7 @@ jobs:
 
             git clone https://github.com/maxxam123/platform03.git
 
-            path=/home/runner/work/platform02/platform02/cluster
+            path=/home/runner/work/platform03/platform03/cluster
       
             for each in $(ls $path); do
               cd $path/$each
