@@ -35,8 +35,16 @@ jobs:
               mkdir -p platform03/gitops/$NAME01
               mkdir -p platform03/gitops/$NAME01/eso
               mkdir -p platform03/gitops/$NAME01/nginx
+              REPLICAS=$( sed -n 3p new/_*/provider.tf )
+              LOADBALANCER=$( sed -n 4p new/_*/provider.tf )
+              SECRET=$( sed -n 5p new/_*/provider.tf )
+
+                ### ESO ###
               cp templates/gitops/eso/* platform03/gitops/$NAME01/eso/
+              sed -i -e "s/SECRET/$SECRET/g" platform03/gitops/$NAME01/eso/values.yaml
+                ### NGINX ###
               cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
+              sed -i -e "s/REPLICAS/$REPLICAS/g" platform03/gitops/$NAME01/nginx/values.yaml
               
               
               #rm -rf platform03/new/_*
