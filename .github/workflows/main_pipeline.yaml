@@ -31,27 +31,15 @@ jobs:
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
       
               ### GITOPS ###
-              REPLICAS=$( sed -n 3p new/_*/provider.tf )
-              LOADBALANCER=$( sed -n 4p new/_*/provider.tf )
-              SECRET=$( sed -n 5p new/_*/provider.tf )
-              path=/home/runner/work/platform03/platform03/templates/gitops
-            
-              for each in $(ls $path); do
-                cd $path/$each
-              
-                ### ESO
-                echo inside gitops
-                ls
-                pwd
-                mkdir -p /home/runner/work/platform03/platform03/gitops/NAME01
-                mkdir -p /home/runner/work/platform03/platform03/gitops/NAME01/eso
-                cp /home/runner/work/platform03/platform03/templates/gitops/eso/* /home/runner/work/platform03/platform03/gitops/NAME01/eso/
-                sed -i -e "s/NAME01/$SECRET/g" /home/runner/work/platform03/platform03/gitops/NAME01/eso/values.yaml
 
-              done
-              cd ../../..
-              ls
-              rm -rf platform03/new/_*
+              mkdir -p platform03/gitops/$NAME01
+              mkdir -p platform03/gitops/$NAME01/eso
+              mkdir -p platform03/gitops/$NAME01/nginx
+              cp templates/gitops/eso/* platform03/cluster/$NAME01/eso/
+              cp templates/gitops/nginx/* platform03/cluster/$NAME01/nginx/
+              
+              
+              #rm -rf platform03/new/_*
 
         - name: Pushes to another repository
           uses: cpina/github-action-push-to-another-repository@main
