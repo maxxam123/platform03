@@ -29,6 +29,26 @@ jobs:
               mkdir -p platform03/cluster/$NAME01
               cp new/_*/provider.tf platform03/cluster/$NAME01/
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
+      
+              ### GITOPS ###
+              path=/home/runner/work/platform02/platform03/templates/gitops
+            
+              for each in $(ls $path); do
+                cd $path/$each
+              
+                ### ESO
+                mkdir -p ../../gitops/NAME01
+                mkdir -p ../../gitops/NAME01/eso
+                cp . ../../gitops/NAME01/eso/
+                sed -i -e "s/NAME01/$NAME01/g" ../../gitops/NAME01/eso/values.yaml
+                
+                ### NGINX
+                mkdir -p ../../gitops/NAME01
+                mkdir -p ../../gitops/NAME01/nginx
+                cp . ../../gitops/NAME01/eso/
+                sed -i -e "s/NAME01/$NAME01/g" ../../gitops/NAME01/nginx/values.yaml  
+              done
+              
               ls
               rm -rf platform03/new/_*
 
