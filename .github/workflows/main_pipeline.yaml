@@ -55,7 +55,7 @@ jobs:
                 sed -i -e "s/REPLICAS/$REPLICAS/g" ../../../gitops/NAME01/nginx/values.yaml
                 sed -i -e "s/LOADBALANCER/$LOADBALANCER/g" ../../../gitops/NAME01/nginx/values.yaml
               done
-              
+              cd ../../..
               ls
               rm -rf platform03/new/_*
 
