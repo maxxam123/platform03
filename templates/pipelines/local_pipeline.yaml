@@ -21,7 +21,7 @@ jobs:
             mkdir -p platform01/.github/workflows
             mkdir -p platform01/cluster/NAME01
 
-            cp -r cluster/aws01/terraform.tfvars  platform01/cluster/NAME01/
+            cp -r cluster/NAME01/terraform.tfvars  platform01/cluster/NAME01/
             cp -r templates/pipelines/create.yaml platform01/.github/workflows/NAME01.yaml
 
             sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/NAME01.yaml
