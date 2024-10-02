@@ -29,8 +29,8 @@ jobs:
               mkdir -p platform03/cluster/$NAME01
               cp new/_*/provider.tf platform03/cluster/$NAME01/
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
-              rm -rf new/_*/*
-              rm -rf new/_*
+              ls
+              rm -rf new
               
               cat local_pipeline.yaml
               ls -la
