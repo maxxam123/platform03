@@ -31,7 +31,9 @@ jobs:
 
      - name: Terraform init
        id: init
-       run: terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
+       run: |
+         cp ../../modules/* .
+         terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
     #  - name: Terraform Plan
     #    run: terraform plan -lock=false
