@@ -1,0 +1,39 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   #- 'cluster/aws05/provider.tf'
+   - 'cluster/aws05/*'
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: bootstrapTerraform
+          run: |
+
+            git clone https://github.com/maxxam123/platform01.git
+
+            NAME=$( sed -n 1p cluster/aws05/provider.tf )
+            PROVIDER=$( sed -n 2p cluster/aws05/provider.tf )
+
+            mkdir -p platform01/.github/workflows
+            mkdir -p platform01/cluster/aws05
+
+            cp -r cluster/aws05/terraform.tfvars  platform01/cluster/aws05/
+            cp -r templates/pipelines/create.yaml platform01/.github/workflows/aws05.yaml
+
+            sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/aws05.yaml
+            sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/aws05.yaml
+
+        - name: Pushes to another repository
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+          with:
+            source-directory: "platform01"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "platform01"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
