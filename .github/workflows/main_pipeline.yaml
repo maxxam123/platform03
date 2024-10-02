@@ -35,8 +35,8 @@ jobs:
               mkdir -p platform03/gitops/$NAME01
               mkdir -p platform03/gitops/$NAME01/eso
               mkdir -p platform03/gitops/$NAME01/nginx
-              cp templates/gitops/eso/* platform03/cluster/$NAME01/eso/
-              cp templates/gitops/nginx/* platform03/cluster/$NAME01/nginx/
+              cp templates/gitops/eso/* platform03/gitops/$NAME01/eso/
+              cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
               
               
               #rm -rf platform03/new/_*
