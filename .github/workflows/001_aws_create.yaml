@@ -14,8 +14,8 @@ jobs:
           run: |
 
             git clone https://github.com/maxxam123/platform01.git
-            NAME     = aws01
-            PROVIDER = aws
+            NAME=aws01
+            PROVIDER=aws
             
             echo $NAME
             echo $PROVIDER
