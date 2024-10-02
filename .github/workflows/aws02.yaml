@@ -15,8 +15,8 @@ jobs:
 
             git clone https://github.com/maxxam123/platform01.git
 
-            NAME=$( sed -n 1p cluster/aws01/provider.tf )
-            PROVIDER=$( sed -n 2p cluster/aws01/provider.tf )
+            NAME=$( sed -n 1p cluster/aws02/provider.tf )
+            PROVIDER=$( sed -n 2p cluster/aws02/provider.tf )
 
             mkdir -p platform01/.github/workflows
             mkdir -p platform01/cluster/aws02
