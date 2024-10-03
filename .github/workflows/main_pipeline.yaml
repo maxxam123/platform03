@@ -28,7 +28,7 @@ jobs:
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
       
               ### GITOPS ###
-              mkdir -p platform03/gitops/$NAME01/{bootstrap/{eso,nginx,velero,certmanager},monitor/{prometheus,thanos}}
+              mkdir -p /home/runner/work/platform03/platform03/gitops/$NAME01/{bootstrap/{eso,nginx,velero,certmanager},monitor/{prometheus,thanos}}
               ls /home/runner/work/platform03/platform03/gitops/$NAME01/bootstrap
 
               bootstrap=/home/runner/work/platform03/platform03/templates/gitops/bootstrap
