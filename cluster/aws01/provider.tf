@@ -1,5 +1,5 @@
 aws01
 aws
-1
-Loadbalancer
-supersecret
+nginx REPLICAS=1 LOADBALANCER=Loadbalancer
+eso
+velero URL=https://www.test.com
