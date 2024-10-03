@@ -1,1 +1,5 @@
-test
+controller:
+  replicaCount: REPLICAS
+  service:
+    type: LOADBALANCER
+    externalTrafficPolicy: Local
