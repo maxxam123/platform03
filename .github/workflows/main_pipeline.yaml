@@ -29,6 +29,7 @@ jobs:
       
               ### GITOPS ###
               mkdir -p platform03/gitops/$NAME01/{bootstrap/{eso,nginx,velero,certmanager},monitor/{prometheus,thanos}}
+              ls /home/runner/work/platform03/platform03/templates/gitops/bootstrap
 
               bootstrap=/home/runner/work/platform03/platform03/templates/gitops/bootstrap
               monitor=/home/runner/work/platform03/platform03/templates/gitops/monitor
