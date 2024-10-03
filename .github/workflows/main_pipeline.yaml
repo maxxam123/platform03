@@ -44,13 +44,4 @@ jobs:
                       echo empty
                   fi
               done
-        - name: Pushes to another repository
-          uses: cpina/github-action-push-to-another-repository@main
-          env:
-            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-          with:
-            source-directory: "platform03"
-            destination-github-username: "maxxam123"
-            destination-repository-name: "platform03"
-            user-email: hennighausenmax@gmail.com
-            target-branch: main
+
