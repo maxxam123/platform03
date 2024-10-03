@@ -43,7 +43,7 @@ jobs:
                       ls -l ../../..
                       ls -l ../../../..
                       ls -l ../../../../..
-                      cp $bootstrap/$each/* ../../../../../platform03/gitops/$NAME01/bootstrap/$each/
+                      cp $bootstrap/$each/* ../../../../../../platform03/gitops/$NAME01/bootstrap/$each/
                     else
                       echo empty
                   fi
