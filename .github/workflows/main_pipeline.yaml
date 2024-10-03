@@ -45,7 +45,7 @@ jobs:
                     then
 
                       ls -l ../../../../..
-                      cp $bootstrap/$each/* ../../../../../platform03/gitops/$NAME01/bootstrap/$each/
+                      cp $bootstrap/$each/* ../../../../platform03/gitops/$NAME01/bootstrap/$each/
                       ls ../../../../../platform03
                       
                     else
