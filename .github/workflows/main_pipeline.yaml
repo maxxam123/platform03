@@ -92,6 +92,15 @@ jobs:
                 else
                   echo empty
               fi
+
+                ### THANOS ###
+              THANOS=$(cat new/_*/provider.tf | grep "thanos" | awk '{print $2}')
+              if [ $THANOS ]
+                then
+                  cp templates/gitops/monitor/thanos/* platform03/gitops/$NAME01/monitor/thanos/
+                else
+                  echo empty
+              fi
               
               #cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
               #sed -i -e "s/REPLICAS/$REPLICAS/g" platform03/gitops/$NAME01/nginx/values.yaml
