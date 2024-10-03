@@ -7,3 +7,4 @@ certmanager cert=cert01
 prometheus REPLICAS=1
 thanos REPLICAS=1
 
+
