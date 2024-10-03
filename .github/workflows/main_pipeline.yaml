@@ -58,7 +58,7 @@ jobs:
                 VAR=$(cat /home/runner/work/platform03/platform03/new/_*/provider.tf | grep $each | awk '{print $2}')
                   if [ $VAR ]
                     then
-                      cp $bootstrap/$each/* ../../../../platform03/gitops/$NAME01/monitor/$each/
+                      cp $monitor/$each/* ../../../../platform03/gitops/$NAME01/monitor/$each/
                     else
                       echo empty
                   fi
