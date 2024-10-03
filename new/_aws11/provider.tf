@@ -1,4 +1,4 @@
-aws02
+aws01
 aws
 nginx REPLICAS=1 LOADBALANCER=Loadbalancer
 eso
