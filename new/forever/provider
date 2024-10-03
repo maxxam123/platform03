@@ -8,3 +8,4 @@ prometheus REPLICAS=1
 thanos REPLICAS=1
 
 
+
