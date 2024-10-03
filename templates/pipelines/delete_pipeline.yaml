@@ -1,0 +1,44 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - 'delete/**'
+
+
+env:
+ AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS }}
+ AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
+ BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: test
+        run: |
+          ls -la
+          git clone https://github.com/maxxam123/platform01.git
+          cd platform01/.github/workflows
+          ls -la
+          rm -rf NAME.yaml
+          cd ../../../
+          cd platform01/cluster
+          ls -la
+          rm -rf NAME
+          cd ../../
+          cd platform01/gitops
+          rm -rf NAME
+          cd ../..
+
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN_2 }}
+        with:
+          source-directory: "platform01"
+          destination-github-username: "maxxam123"
+          destination-repository-name: "platform01"
+          user-email: hennighausenmax@gmail.com
+          target-branch: main
