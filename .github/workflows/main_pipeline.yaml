@@ -88,7 +88,7 @@ jobs:
               PROMETHEUS=$(cat new/_*/provider.tf | grep "prometheus" | awk '{print $2}')
               if [ $PROMETHEUS ]
                 then
-                  cp templates/gitops/monitoring/prometheus/* platform03/gitops/$NAME01/monitoring/prometheus/
+                  cp templates/gitops/monitor/prometheus/* platform03/gitops/$NAME01/monitor/prometheus/
                 else
                   echo empty
               fi
