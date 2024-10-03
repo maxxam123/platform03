@@ -30,10 +30,6 @@ jobs:
               
               cp new/_*/provider.tf platform03/cluster/$NAME01/
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
-      
-              ### GITOPS ###
-              #mkdir -p /home/runner/work/platform03/platform03/gitops/$NAME01/{bootstrap/{eso,nginx,velero,certmanager},monitor/{prometheus,thanos}}
-              #ls /home/runner/work/platform03/platform03/gitops/$NAME01/bootstrap
 
               bootstrap=/home/runner/work/platform03/platform03/templates/gitops/bootstrap
               monitor=/home/runner/work/platform03/platform03/templates/gitops/monitor
@@ -41,26 +37,20 @@ jobs:
               ### BOOTSTRAP ###
               for each in $(ls $bootstrap); do
                 cd $bootstrap/$each
-                echo $each
                 VAR=$(cat /home/runner/work/platform03/platform03/new/_*/provider.tf | grep $each | awk '{print $2}')
                   if [ $VAR ]
-                    then
-                      cp $bootstrap/$each/* ../../../../platform03/gitops/$NAME01/bootstrap/$each/
-                    else
-                      echo empty
+                    then cp $bootstrap/$each/* ../../../../platform03/gitops/$NAME01/bootstrap/$each/
+                    else echo empty
                   fi
               done
 
               ### MONITOR ###
               for each in $(ls $monitor); do
                 cd $monitor/$each
-                echo $each
                 VAR=$(cat /home/runner/work/platform03/platform03/new/_*/provider.tf | grep $each | awk '{print $2}')
                   if [ $VAR ]
-                    then
-                      cp $monitor/$each/* ../../../../platform03/gitops/$NAME01/monitor/$each/
-                    else
-                      echo empty
+                    then cp $monitor/$each/* ../../../../platform03/gitops/$NAME01/monitor/$each/
+                    else echo empty
                   fi
               done
 
