@@ -52,7 +52,7 @@ jobs:
               NGINX=$(cat new/_*/provider.tf | grep "nginx" | awk '{print $2}')
               if [ $NGINX ]
                 then
-                  cp templates/gitops/nginx/* platform03/gitops/$NAME01/bootstrap/nginx/
+                  cp templates/gitops/bootstrap/nginx/* platform03/gitops/$NAME01/bootstrap/nginx/
                 else
                   echo empty
               fi
@@ -61,7 +61,7 @@ jobs:
               ESO=$(cat new/_*/provider.tf | grep "eso" | awk '{print $2}')
               if [ $ESO ]
                 then
-                  cp templates/gitops/eso/* platform03/gitops/$NAME01/bootstrap/eso/
+                  cp templates/gitops/bootstrap/eso/* platform03/gitops/$NAME01/bootstrap/eso/
                 else
                   echo empty
               fi
@@ -70,7 +70,7 @@ jobs:
               VELERO=$(cat new/_*/provider.tf | grep "velero" | awk '{print $2}')
               if [ $VELERO ]
                 then
-                  cp templates/gitops/velero/* platform03/gitops/$NAME01/bootstrap/velero/
+                  cp templates/gitops/bootstrap/velero/* platform03/gitops/$NAME01/bootstrap/velero/
                 else
                   echo empty
               fi
@@ -79,7 +79,16 @@ jobs:
               CERTMANGER=$(cat new/_*/provider.tf | grep "certmanager" | awk '{print $2}')
               if [ $CERTMANGER ]
                 then
-                  cp templates/gitops/certmanager/* platform03/gitops/$NAME01/bootstrap/certmanager/
+                  cp templates/gitops/bootstrap/certmanager/* platform03/gitops/$NAME01/bootstrap/certmanager/
+                else
+                  echo empty
+              fi
+
+                ### PROMETHEUS ###
+              PROMETHEUS=$(cat new/_*/provider.tf | grep "prometheus" | awk '{print $2}')
+              if [ $PROMETHEUS ]
+                then
+                  cp templates/gitops/monitor/prometheus/* platform03/gitops/$NAME01/monitor/prometheus/
                 else
                   echo empty
               fi
