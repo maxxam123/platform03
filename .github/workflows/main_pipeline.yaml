@@ -36,7 +36,7 @@ jobs:
               for each in $(ls $bootstrap); do
                 cd $bootstrap/$each
                 echo $each
-                VAR=$(cat new/_*/provider.tf | grep $each | awk '{print $2}')
+                VAR=$(cat /home/runner/work/platform03/platform03/new/_*/provider.tf | grep $each | awk '{print $2}')
                   if [ $VAR ]
                     then
                       cp $bootstrap/$each/* /home/runner/work/platform03/platform03/gitops/$NAME01/bootstrap/$each/
