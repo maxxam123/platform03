@@ -32,7 +32,7 @@ jobs:
      - name: Terraform init
        id: init
        run: |
-         cp ../../modules/PROVIDER/*
+         cp ../../modules/PROVIDER/* .
          terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      - name: Terraform Plan
