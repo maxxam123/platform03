@@ -33,7 +33,7 @@ jobs:
               bootstrap=/home/runner/work/platform03/platform03/templates/gitops/bootstrap
               monitor=/home/runner/work/platform03/platform03/templates/gitops/monitor
               for each in $(ls $bootstrap); do
-                cd $path/$each
+                cd $bootstrap/$each
                 echo $each
               done
 
