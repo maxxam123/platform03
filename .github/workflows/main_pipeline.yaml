@@ -31,70 +31,17 @@ jobs:
               cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
       
               ### GITOPS ###
-
-              mkdir -p platform03/gitops/$NAME01
-              mkdir -p platform03/gitops/$NAME01/eso
-              mkdir -p platform03/gitops/$NAME01/nginx
-              mkdir -p platform03/gitops/$NAME01/velero
-              mkdir -p platform03/gitops/$NAME01/certmanager
+              #/{subfolder1,subfolder2,subfolder3}
+              mkdir -p platform03/gitops/$NAME01/{bootstrap/{eso,nginx,velero,certmanager},monitor/{prometheus,thanos}}
+              #mkdir -p platform03/gitops/$NAME01/bootstrap
+              #mkdir -p platform03/gitops/$NAME01/monitor
+              #mkdir -p platform03/gitops/$NAME01/bootstrap/eso
+              #mkdir -p platform03/gitops/$NAME01/bootstrap/nginx
+              #mkdir -p platform03/gitops/$NAME01/bootstrap/velero
+              #mkdir -p platform03/gitops/$NAME01/bootstrap/certmanager
+              
               #REPLICAS=$( sed -n 3p new/_*/provider.tf )
               #LOADBALANCER=$( sed -n 4p new/_*/provider.tf )
               #SECRET=$( sed -n 5p new/_*/provider.tf )
 
-                ### ESO ###
-              #cp templates/gitops/eso/* platform03/gitops/$NAME01/eso/
-              #sed -i -e "s/SECRET/$SECRET/g" platform03/gitops/$NAME01/eso/values.yaml
-              
-                ### NGINX ###
-              NGINX=$(cat new/_*/provider.tf | grep "nginx" | awk '{print $2}')
-              if [ $NGINX ]
-                then
-                  cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
-                else
-                  echo empty
-              fi
 
-                ### ESO ###
-              ESO=$(cat new/_*/provider.tf | grep "eso" | awk '{print $2}')
-              if [ $ESO ]
-                then
-                  cp templates/gitops/eso/* platform03/gitops/$NAME01/eso/
-                else
-                  echo empty
-              fi
-
-                 ### VELERO ###
-              VELERO=$(cat new/_*/provider.tf | grep "velero" | awk '{print $2}')
-              if [ $VELERO ]
-                then
-                  cp templates/gitops/velero/* platform03/gitops/$NAME01/velero/
-                else
-                  echo empty
-              fi
-
-                ### CERTMANGER ###
-              CERTMANGER=$(cat new/_*/provider.tf | grep "certmanager" | awk '{print $2}')
-              if [ $CERTMANGER ]
-                then
-                  cp templates/gitops/certmanager/* platform03/gitops/$NAME01/certmanager/
-                else
-                  echo empty
-              fi
-              
-              #cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
-              #sed -i -e "s/REPLICAS/$REPLICAS/g" platform03/gitops/$NAME01/nginx/values.yaml
-              #sed -i -e "s/LOADBALANCER/$LOADBALANCER/g" platform03/gitops/$NAME01/nginx/values.yaml
-              
-              
-              #rm -rf platform03/new/_*
-
-        - name: Pushes to another repository
-          uses: cpina/github-action-push-to-another-repository@main
-          env:
-            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-          with:
-            source-directory: "platform03"
-            destination-github-username: "maxxam123"
-            destination-repository-name: "platform03"
-            user-email: hennighausenmax@gmail.com
-            target-branch: main
