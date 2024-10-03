@@ -3,7 +3,7 @@ on:
    branches:
    - main
    paths:
-   - 'delete/**'
+   - 'delete_cluster/**'
 
 
 env:
