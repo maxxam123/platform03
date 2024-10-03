@@ -42,8 +42,18 @@ jobs:
                 ### ESO ###
               cp templates/gitops/eso/* platform03/gitops/$NAME01/eso/
               #sed -i -e "s/SECRET/$SECRET/g" platform03/gitops/$NAME01/eso/values.yaml
+              
                 ### NGINX ###
-              cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
+              NGINX=$(cat new/_*/provider.tf | grep "nginx" | awk '{print $2}')
+              if [ $NGINX ]
+                then
+                  echo not_empty
+                  cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
+                else
+                  echo empty
+              fi
+              
+              #cp templates/gitops/nginx/* platform03/gitops/$NAME01/nginx/
               #sed -i -e "s/REPLICAS/$REPLICAS/g" platform03/gitops/$NAME01/nginx/values.yaml
               #sed -i -e "s/LOADBALANCER/$LOADBALANCER/g" platform03/gitops/$NAME01/nginx/values.yaml
               
