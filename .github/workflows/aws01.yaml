@@ -20,9 +20,12 @@ jobs:
 
             mkdir -p platform01/.github/workflows
             mkdir -p platform01/cluster/aws01
+            mkdir -p platform01/gitops/aws01/{bootstrap,monitor}
 
             cp -r cluster/aws01/terraform.tfvars  platform01/cluster/aws01/
             cp -r templates/pipelines/create.yaml platform01/.github/workflows/aws01.yaml
+            cp -r gitops/aws01/bootstrap/* platform01/gitops/aws01/bootstrap/
+            cp -r gitops/aws01/monitor/* platform01/gitops/aws01/monitor/
 
             sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/aws01.yaml
             sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/aws01.yaml
