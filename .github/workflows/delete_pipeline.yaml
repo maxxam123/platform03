@@ -34,3 +34,30 @@ jobs:
             destination-repository-name: "platform01"
             user-email: hennighausenmax@gmail.com
             target-branch: main
+
+        - uses: actions/checkout@v3
+        - name: delete cluster
+          run: |
+            NAME=$( sed -n 1p new/delete_cluster/delete.yaml )
+            git clone https://github.com/maxxam123/platform03.git
+            cd platform03/.github/workflows
+            ls -la
+            rm -rf $NAME.yaml
+            cd ../../../
+            cd platform03/cluster
+            ls -la
+            rm -rf $NAME
+            cd ../..
+            cd platform03/gitops
+            rm -rf $NAME
+
+        - name: Pushes to another repository2
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+          with:
+            source-directory: "platform03"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "platform03"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
