@@ -4,6 +4,7 @@ on:
    - main
    paths:
    - 'new/delete_cluster/delete.yaml'
+   #- 'new/forever/delete'
 
 jobs:
   build:
