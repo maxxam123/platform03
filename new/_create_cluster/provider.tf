@@ -1,4 +1,4 @@
-aws04
+aws05
 aws
 nginx REPLICAS=1 LOADBALANCER=Loadbalancer
 eso SECRET=supersecret
