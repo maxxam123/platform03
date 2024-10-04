@@ -34,7 +34,7 @@ jobs:
        run: |
          cp ../../modules/PROVIDER/* .
          sed -i -e "s/TERRAFORM/NAME/g" main.tf
-         
+         sed -i -e "s/TERRAFORM/NAME/g" provider.tf
          terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      - name: Terraform Plan
