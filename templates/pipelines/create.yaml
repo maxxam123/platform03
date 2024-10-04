@@ -33,6 +33,7 @@ jobs:
        id: init
        run: |
          cp ../../modules/PROVIDER/* .
+         #sed -i -e "s/TERRAFORM/$NAME/g" main.yaml
          terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      - name: Terraform Plan
