@@ -1,5 +1,5 @@
 aws06
-aws2
+aws02
 nginx REPLICAS=1 LOADBALANCER=Loadbalancer
 eso SECRET=supersecret
 velero URL=https://www.test.com
