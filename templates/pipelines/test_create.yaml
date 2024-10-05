@@ -36,9 +36,7 @@ jobs:
          cp ../../modules/PROVIDER/provider.tf .
          cp ../../modules/PROVIDER/vpc.tf .
          cp ../../modules/PROVIDER/eks.tf .
-         sed -i -e "s/TERRAFORM/NAME/g" provider.tf
-         sed -i -e "s/TERRAFORM/NAME/g" eks.tf
-         sed -i -e "s/TERRAFORM/NAME/g" vpc.tf         
+         sed -i -e "s/TERRAFORM/NAME/g" provider.tf     
          terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
        
      - name: Terraform Plan
@@ -53,8 +51,6 @@ jobs:
      #    cp ../../modules/PROVIDER/eks_post.tf .
      #    cp ../../modules/PROVIDER/argo.tf .
      #    cp ../../modules/PROVIDER/application.tf .
-     #    sed -i -e "s/TERRAFORM/NAME/g" eks_post.tf
-     #    sed -i -e "s/TERRAFORM/NAME/g" application.tf
          
      #- name: Terraform Plan
      #  run: terraform plan -lock=false
