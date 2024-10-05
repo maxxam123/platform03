@@ -30,3 +30,4 @@ jobs:
             sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/NAME01.yaml
             sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/NAME01.yaml
 
+            cat platform01/.github/workflows/NAME01.yaml
