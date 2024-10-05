@@ -30,13 +30,3 @@ jobs:
             sed -i -e "s/NAME/$NAME/g"         platform01/.github/workflows/NAME01.yaml
             sed -i -e "s/PROVIDER/$PROVIDER/g" platform01/.github/workflows/NAME01.yaml
 
-        - name: Pushes to another repository
-          uses: cpina/github-action-push-to-another-repository@main
-          env:
-            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
-          with:
-            source-directory: "platform01"
-            destination-github-username: "maxxam123"
-            destination-repository-name: "platform01"
-            user-email: hennighausenmax@gmail.com
-            target-branch: main
