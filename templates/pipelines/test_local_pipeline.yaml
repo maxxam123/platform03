@@ -26,8 +26,8 @@ jobs:
             cp -r applications/NAME01/create_application.yaml  platform01/applications/NAME01/
 
             cp -r cluster/NAME01/terraform.tfvars  platform01/cluster/NAME01/
-            cp -r cluster/NAME01/provider.tfvars  platform01/cluster/NAME01/
-            cp -r cluster/NAME01/application.tfvars  platform01/cluster/NAME01/
+            cp -r cluster/NAME01/provider.tf  platform01/cluster/NAME01/
+            cp -r cluster/NAME01/application.tf  platform01/cluster/NAME01/
             
             cp -r templates/pipelines/test_create.yaml platform01/.github/workflows/NAME01.yaml
             cp -r gitops/NAME01/bootstrap/* platform01/gitops/NAME01/bootstrap/
