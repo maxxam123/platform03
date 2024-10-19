@@ -23,7 +23,7 @@ jobs:
               cp templates/applications/create_application.yaml .
               sed -i -e "s/NAME01/$NAME01/g" create_application.yaml
               mkdir -p platform03/applications/$NAME01 
-              cp create_application.yaml platform03/applications/$NAME01/$NAME01.yaml
+              cp create_application.yaml platform03/applications/$NAME01/create_application.yaml
 
               sed -i -e "s/NAME01/$NAME01/g" test_local_pipeline.yaml      
               sed -i -e "s/PROVIDER01/$PROVIDER01/g" test_local_pipeline.yaml
