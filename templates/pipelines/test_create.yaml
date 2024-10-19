@@ -41,6 +41,8 @@ jobs:
          sed -i -e "s/TERRAFORM/NAME/g" provider.tf
          sed -i -e "s/TERRAFORM/NAME/g" application.tf
          terraform init -backend-config="bucket=dunhuang-gansu-terraform-state"
+         cat application.tf
+         cat provider.tf
        
      - name: Terraform Plan
        run: terraform plan -lock=false
