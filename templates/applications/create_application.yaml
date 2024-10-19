@@ -13,7 +13,7 @@ spec:
   project: default
   source:
     path: secret/
-    repoURL: 'https:/github.com/maxxam123/platform01/NAME01.git'
+    repoURL: 'https:/github.com/maxxam123/platform01/applications/NAME01.git'
     targetRevision: main
   syncPolicy:
     automated:
