@@ -1,0 +1,71 @@
+on:
+ push:
+   branches:
+   - main
+   paths:
+   - 'new/forever/provider'
+
+jobs:
+  build:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: main pipeline
+          run: |
+
+            git clone https://github.com/maxxam123/platform03.git
+            ls -la
+              
+              NAME01=$( sed -n 1p new/_*/provider.tf )
+              PROVIDER01=$( sed -n 2p new/_*/provider.tf )
+              cp templates/pipelines/local_pipeline.yaml .
+              
+              # cp templates/applications/create_application.yaml .
+              # sed -i -e "s/NAME01/$NAME01/g" create_application.yaml
+              # mkdir -p platform03/applications/$NAME01 
+              # cp create_application.yaml platform03/applications/$NAME01/$NAME01.yaml
+              
+              sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
+              sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
+              cp local_pipeline.yaml platform03/.github/workflows/$NAME01.yaml
+              mkdir -p platform03/cluster/$NAME01
+
+              mkdir -p platform03/gitops/$NAME01/bootstrap/{eso,velero,certmanager,nginx}
+              mkdir -p platform03/gitops/$NAME01/monitor/{prometheus,thanos}
+              
+              cp new/_*/provider.tf platform03/cluster/$NAME01/
+              cp new/_*/terraform.tfvars platform03/cluster/$NAME01/
+
+              bootstrap=/home/runner/work/platform03/platform03/templates/gitops/bootstrap
+              monitor=/home/runner/work/platform03/platform03/templates/gitops/monitor
+
+              ### BOOTSTRAP ###
+              for each in $(ls $bootstrap); do
+                cd $bootstrap/$each
+                VAR=$(cat /home/runner/work/platform03/platform03/new/_*/provider.tf | grep $each | awk '{print $2}')
+                  if [ $VAR ]
+                    then cp $bootstrap/$each/* ../../../../platform03/gitops/$NAME01/bootstrap/$each/
+                    else echo empty
+                  fi
+              done
+
+              ### MONITOR ###
+              for each in $(ls $monitor); do
+                cd $monitor/$each
+                VAR=$(cat /home/runner/work/platform03/platform03/new/_*/provider.tf | grep $each | awk '{print $2}')
+                  if [ $VAR ]
+                    then cp $monitor/$each/* ../../../../platform03/gitops/$NAME01/monitor/$each/
+                    else echo empty
+                  fi
+              done
+
+        - name: Pushes to another repository
+          uses: cpina/github-action-push-to-another-repository@main
+          env:
+            API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+          with:
+            source-directory: "platform03"
+            destination-github-username: "maxxam123"
+            destination-repository-name: "platform03"
+            user-email: hennighausenmax@gmail.com
+            target-branch: main
