@@ -19,8 +19,12 @@ jobs:
               NAME01=$( sed -n 1p new/_*/provider.tf )
               PROVIDER01=$( sed -n 2p new/_*/provider.tf )
               cp templates/pipelines/local_pipeline.yaml .
+              
               # cp templates/applications/create_application.yaml .
-
+              # sed -i -e "s/NAME01/$NAME01/g" create_application.yaml
+              # mkdir -p platform03/applications/$NAME01 
+              # cp create_application.yaml platform03/applications/$NAME01.yaml
+              
               sed -i -e "s/NAME01/$NAME01/g" local_pipeline.yaml      
               sed -i -e "s/PROVIDER01/$PROVIDER01/g" local_pipeline.yaml
               cp local_pipeline.yaml platform03/.github/workflows/$NAME01.yaml
