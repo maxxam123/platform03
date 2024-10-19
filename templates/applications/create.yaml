@@ -1,1 +1,23 @@
-app
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    name: ''
+    server: 'https://kubernetes.default.svc' 
+  project: default
+  source:
+    path: secret/
+    repoURL: 'https:/github.com/maxxam123/secret.git'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
