@@ -12,8 +12,8 @@ spec:
     server: 'https://kubernetes.default.svc' 
   project: default
   source:
-    path: secret/
-    repoURL: 'https:/github.com/maxxam123/platform01/gitops/NAME01/monitor'
+    path: gitops/NAME01/monitor/
+    repoURL: 'https:/github.com/maxxam123/platform01.git'
     targetRevision: main
   syncPolicy:
     automated:
@@ -36,8 +36,8 @@ spec:
     server: 'https://kubernetes.default.svc' 
   project: default
   source:
-    path: secret/
-    repoURL: 'https:/github.com/maxxam123/platform01/gitops/NAME01/bootstrap'
+    path: gitops/NAME01/bootstrap/
+    repoURL: 'https:/github.com/maxxam123/platform01.git'
     targetRevision: main
   syncPolicy:
     automated:
