@@ -38,8 +38,8 @@ jobs:
               mkdir -p platform03/gitops/$NAME01/monitor/{prometheus,thanos}
 
               ####################
-              sed -i -e "s/NAME01/$NAME01/g" application.tf
-              sed -i -e "s/NAME01/$NAME01/g" provider.tf
+              sed -i -e "s/TERRAFORM/$NAME01/g" application.tf
+              sed -i -e "s/TERRAFORM/$NAME01/g" provider.tf
               cp application.tf platform03/cluster/$NAME01/application.tf
               cp provider.tf platform03/cluster/$NAME01/provider.tf
               
