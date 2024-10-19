@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: 
+  name: NAME01-monitor
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -13,7 +13,31 @@ spec:
   project: default
   source:
     path: secret/
-    repoURL: 'https:/github.com/maxxam123/platform01/applications/NAME01.git'
+    repoURL: 'https:/github.com/maxxam123/platform01/gitops/NAME01/monitor'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: NAME01-bootstrap
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    name: ''
+    server: 'https://kubernetes.default.svc' 
+  project: default
+  source:
+    path: secret/
+    repoURL: 'https:/github.com/maxxam123/platform01/gitops/NAME01/bootstrap'
     targetRevision: main
   syncPolicy:
     automated:
